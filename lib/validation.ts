@@ -21,6 +21,10 @@ export const checkPassword = (password: string): { isValid: boolean, errors: str
 export const checkEmail = (email: string): { isValid: boolean; errors: string[] } => {
     const errors: string[] = [];
 
+    if (email.length <= 3 || email.length >= 254) {
+        errors.push("Email must contain between 3 and 254 characters");
+    }
+
     if (/\s/.test(email)) {
         errors.push("Email should not contain spaces");
     }
